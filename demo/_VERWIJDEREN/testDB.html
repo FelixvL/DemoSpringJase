@@ -1,38 +1,29 @@
 <html>
-<head>
-<script>
-    var xhttp = new XMLHttpRequest();
-function defunctie(){
-    var person={"naam":"peit","leeftijd":"7"};
+    <head>
+        <script>
+            var xhttp = new XMLHttpRequest();
+            function defunctie(){
+                var naam = document.getElementById("naam").value;
+                var leeftijd = document.getElementById("leeftijd").value;
+                var person={"naam":naam,"leeftijd":"7"};
                 var url = "http://localhost:8081/api/person";
                 xhttp.open ("POST", url);    // async
                 xhttp.setRequestHeader ("Content-Type", "application/json");
                 xhttp.onreadystatechange = OnStateChange;
                 xhttp.send (JSON.stringify(person));
-
-
-
-}
-        function OnStateChange () {
-            if (xhttp.readyState == 0 || xhttp.readyState == 4) {
-              // defined in ajax.js
-                    alert ("Request complete.");
-            }else {
-                    alert ("Operation failed.");
-                }
-            
-        }
-</script>
-</head>
-
-
-
-<body>
-
-<input type=button onclick="defunctie()"/>
-<input type=text id=naam >
-<input type=text id=leeftijd >
-
-<div id="dataTerug">antwoorDiv</div>
-</body>
+            }
+            function OnStateChange () {
+                if (xhttp.readyState == 0 || xhttp.readyState == 4) {
+                    document.getElementById("dataTerug").innerHTML = "Dit is het JSON object dat je terug krijgt: " + xhttp.responseText;
+                }    
+            }
+        </script>
+    </head>
+    <body>
+        <input type=text id=naam placeholder="vul naam in">
+        <input type=text id=leeftijd placeholder="vul leeftijd in">
+        <br />
+        <input type=button onclick="defunctie()" value="verstuur"/>
+        <div id="dataTerug">antwoorDiv</div>
+    </body>
 </html>
