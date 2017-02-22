@@ -36,5 +36,13 @@ public class PersonEndpoint {
 		return Response.ok(person).build();
 		
 	}
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response postStudent(Person person) {
+		this.personService.save(person);
+		return Response.accepted(person).build();
+	}
 
+	
 }
