@@ -40,6 +40,7 @@ public class PersonEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response postStudent(Person person) {
+		System.out.println("Ik ben heir");
 		this.personService.save(person);
 		return Response.accepted(person).build();
 	}
