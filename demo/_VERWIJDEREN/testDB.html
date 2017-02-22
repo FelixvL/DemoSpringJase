@@ -5,7 +5,7 @@
             function defunctie(){
                 var naam = document.getElementById("naam").value;
                 var leeftijd = document.getElementById("leeftijd").value;
-                var person={"naam":naam,"leeftijd":"7"};
+                var person={"naam":naam,"leeftijd":leeftijd};
                 var url = "http://localhost:8081/api/person";
                 xhttp.open ("POST", url);    // async
                 xhttp.setRequestHeader ("Content-Type", "application/json");
